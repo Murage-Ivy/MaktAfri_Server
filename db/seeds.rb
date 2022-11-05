@@ -1,5 +1,6 @@
 puts "🌱 Seeding spices..."
 Book.destroy_all
+Author.destroy_all
 # Seed your database here
 
 # Create random record names for author

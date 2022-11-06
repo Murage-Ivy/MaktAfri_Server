@@ -11,4 +11,31 @@ class ApplicationController < Sinatra::Base
     books = Book.all
     books.to_json({ include: :author })
   end
+
+  get "/books/:id" do
+  end
+
+  post "/books" do
+  end
+
+  patch "/books/:id" do
+  end
+
+  delete "/books/:id" do
+  end
+
+  get "/reviews" do
+  end
+
+  get "/reviews/:id" do
+  end
+
+  post "/reviews" do
+  end
+
+  patch "/reviews/:id" do
+  end
+
+  delete "/reviews/:id" do
+  end
 end

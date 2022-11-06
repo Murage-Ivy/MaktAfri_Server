@@ -11,7 +11,9 @@ Author.destroy_all
   )
 end
 
-# 
+# Create random names for users
+
+# Creae book records
 50.times do
   author = Author.order("RANDOM()").first
   Book.create(
@@ -22,8 +24,10 @@ end
     published_date: Faker::Date.between_except(from: 1.year.ago, to: 1.year.from_now, excepted: Date.today),
     image_url: Faker::Avatar.image,
     author_id: author.id,
-
+    # Add 5 reviews for each book
   )
 end
+
+#
 
 puts "✅ Done seeding!"

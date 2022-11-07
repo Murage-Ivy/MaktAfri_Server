@@ -29,6 +29,14 @@ class ApplicationController < Sinatra::Base
   end
 
   patch "/books/:id" do
+    book = Book.find(params[:id])
+    book.update(title: params[:title],
+                category: params[:category],
+                description: params[:description],
+                published_date: params[:published_date],
+                image_url: params[:image_url],
+                author_id: params[:author_id])
+    book.to_json
   end
 
   delete "/books/:id" do

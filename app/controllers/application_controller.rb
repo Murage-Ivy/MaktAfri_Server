@@ -13,6 +13,7 @@ class ApplicationController < Sinatra::Base
   end
 
   get "/books/:id" do
+    book = Book.find(params[:id])
   end
 
   post "/books" do

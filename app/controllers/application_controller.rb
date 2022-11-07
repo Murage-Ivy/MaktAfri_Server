@@ -40,6 +40,9 @@ class ApplicationController < Sinatra::Base
   end
 
   delete "/books/:id" do
+    book = Book.find(params[:id])
+    book.destroy
+    book.to_json
   end
 
   get "/reviews" do

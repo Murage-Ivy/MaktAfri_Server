@@ -47,7 +47,7 @@ class ApplicationController < Sinatra::Base
 
   get "/reviews" do
     reviews = Review.all
-    reviews.to_json(include: { user: { only: [:id, :user_name] } })
+    reviews.to_json(include: { user: { only: [:id, :user_name]},  book: {only: [:id, :title]}})
   end
 
   get "/reviews/:id" do

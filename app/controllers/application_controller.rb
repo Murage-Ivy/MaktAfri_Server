@@ -9,12 +9,12 @@ class ApplicationController < Sinatra::Base
   # Gets all books from the database
   get "/books" do
     books = Book.all
-    books.to_json({ include: :author })
+    books.to_json(include: [:author, reviews: {only: :star_rating}])
   end
 
   get "/books/:id" do
     book = Book.find(params[:id])
-    book.to_json
+    book.to_json( include: [:author, :reviews] )
   end
 
   post "/books" do
@@ -47,7 +47,7 @@ class ApplicationController < Sinatra::Base
 
   get "/reviews" do
     reviews = Review.all
-    reviews.to_json(include: { user: { only: [:id, :user_name]},  book: {only: [:id, :title]}})
+    reviews.to_json(include: { user: { only: [:id, :user_name] }, book: { only: [:id, :title] } })
   end
 
   get "/reviews/:id" do

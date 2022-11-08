@@ -31,15 +31,15 @@ end
 end
 
 # Creae book records
-10.times do
+10.times do |i|
   author = Author.order("RANDOM()").first
   book = Book.create(
 
     title: Faker::Book.title,
     category: Faker::Book.genre,
-    description: Faker::Lorem.paragraph,
+    description: Faker::Lorem.paragraph(sentence_count: 50),
     published_date: Faker::Date.between_except(from: 1.year.ago, to: 1.year.from_now, excepted: Date.today),
-    image_url: book_images.sample,
+    image_url: book_images[i],
     author_id: author.id,
   )
   # Add 5 reviews for each book

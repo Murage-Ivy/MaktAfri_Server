@@ -14,7 +14,7 @@ class ApplicationController < Sinatra::Base
 
   get "/books/:id" do
     book = Book.find(params[:id])
-    book.to_json
+    book.to_json({include: :reviews})
   end
 
   post "/books" do

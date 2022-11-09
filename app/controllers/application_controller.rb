@@ -56,10 +56,11 @@ class ApplicationController < Sinatra::Base
   end
 
   post "/reviews" do
+    user = User.find_or_create_by(user_name: params[:username], email: params[:email])
     review = Review.create(
       comment: params[:comment],
       book_id: params[:book_id],
-      user_id: params[:user_id],
+      user_id: user.id,
       star_rating: params[:star_rating],
     )
     review.to_json(include: { user: { only: [:id, :user_name] } })

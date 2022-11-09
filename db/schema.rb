@@ -13,8 +13,7 @@
 ActiveRecord::Schema.define(version: 2022_11_06_090556) do
 
   create_table "authors", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
+    t.string "name"
   end
 
   create_table "books", force: :cascade do |t|

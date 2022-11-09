@@ -18,12 +18,15 @@ class ApplicationController < Sinatra::Base
   end
 
   post "/books" do
+    author = Author.find_or_create_by(name: params[:author])
     book = Book.create(title: params[:title],
                        category: params[:category],
                        description: params[:description],
                        published_date: params[:published_date],
                        image_url: params[:image_url],
-                       author_id: params[:author_id])
+                       author_id: author.id
+                       )
+                      
 
     book.to_json
   end

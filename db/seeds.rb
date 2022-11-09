@@ -16,9 +16,9 @@ book_images = ["https://brittlepaper.com/wp-content/uploads/2022/06/mary-alice-A
 
 # Create random record names for author
 10.times do
+  
   Author.create(
-    first_name: Faker::Name.first_name,
-    last_name: Faker::Name.last_name,
+    name: Faker::Name.name,
   )
 end
 

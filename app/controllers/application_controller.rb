@@ -9,12 +9,12 @@ class ApplicationController < Sinatra::Base
   # Gets all books from the database
   get "/books" do
     books = Book.all
-    books.to_json(include: [:author, reviews: {only: :star_rating}])
+    books.to_json(include: [:author])
   end
 
   get "/books/:id" do
     book = Book.find(params[:id])
-    book.to_json( include: [:author, :reviews] )
+    book.to_json(include: [:users, :author, reviews: { only: [:id, :star_rating, :book_id, :comment, :user_id]}])
   end
 
   post "/books" do
@@ -24,11 +24,8 @@ class ApplicationController < Sinatra::Base
                        description: params[:description],
                        published_date: params[:published_date],
                        image_url: params[:image_url],
-                       author_id: author.id
-                       )
-                      
-
-    book.to_json
+                       author_id: author.id)
+    book.to_json(include: :author)
   end
 
   patch "/books/:id" do
@@ -45,9 +42,9 @@ class ApplicationController < Sinatra::Base
   delete "/books/:id" do
     book = Book.find(params[:id])
     book.destroy
-    book.to_json
+    book.to_json()
   end
-
+  # start of review end poinst
   get "/reviews" do
     reviews = Review.all
     reviews.to_json(include: { user: { only: [:id, :user_name] }, book: { only: [:id, :title] } })
@@ -55,7 +52,7 @@ class ApplicationController < Sinatra::Base
 
   get "/reviews/:id" do
     review = Review.find(params[:id])
-    review.to_json()
+    review.to_json(include: { user: { only: [:id, :user_name] } })
   end
 
   post "/reviews" do
@@ -83,4 +80,17 @@ class ApplicationController < Sinatra::Base
     review.destroy
     review.to_json
   end
+  # End of review end points
+
+  get "/users/:id" do
+    user = User.find(params[:id])
+    user.to_json
+  end
+
+  get "/users" do
+    user = User.all
+    user.to_json
+  end
+
+  
 end

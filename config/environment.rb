@@ -6,6 +6,8 @@ ENV["RACK_ENV"] ||= "development"
 require "bundler/setup"
 Bundler.require(:default, ENV["RACK_ENV"])
 
+
+# Required for production
 configure :production do
   db = URI.parse(ENV["DATABASE_URL"] || "postgres://localhost/mydb")
 

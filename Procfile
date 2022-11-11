@@ -1,2 +1,2 @@
 release: bundle exec rake db:migrate db:seed
-web: bundle exec rake server
+web: bundle exec rackup config.ru

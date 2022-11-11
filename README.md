@@ -64,6 +64,5 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ### Live Heroku Page Link
 
 1. [Books](https://maktafri-api.herokuapp.com/books)
-2. [Reviews](https://maktafri-api.herokuapp.com/reviews)
 
 # MaktAfri by Ivy Murage, Brian Kipkoech, Rachel Muriithi, Nelson Mutinda, and Francis Muriithi
